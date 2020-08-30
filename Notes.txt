@@ -1,0 +1,276 @@
+// variable - boxes
+// convention - camelCased 
+// 2 rules:
+// 1) name must contain letters, numbers or symbols $ _
+// 2) first character of name can't be a number
+
+'use strict'
+
+// 1) sloppy "normal" mode - default in scripts
+// 2) strict mode - throws more errors, prevents pitfalls of the language
+
+hoisting
+https://developer.mozilla.org/pt-BR/docs/Glossario/Hoisting
+
+Em JavaScript, funções e variáveis são hoisted (ou "levados ao topo"). Hoisting é um comportamento 
+do JavaScript de mover declarações para o topo de um escopo (o escopo global ou da função em que se encontra).
+
+Isso significa que você é capaz de usar uma função ou variável antes mesmo de tê-las declaradas, 
+ou em outras palavras: uma função ou variável podem ser declaradas depois de já terem sido utilizadas.
+
+ATENÇÃO! criar variáveis com os tipos const e let impedem 'hoisting'. Não permitem acessar variáveis antes de serem criadas.
+LET e CONST corrigem os velhos problemas em utilizar o antigo 'var'
+
+*** Why use let & const over var ***
+
+With the release of ES6, two new ways to declare variables were introduced namely let and const. 
+These two new ways to declare variables solve a lot of issues which had been there in the language for a long time.
+
+Using let, we can declare variables which are blocked scoped but can be reassigned to different values. 
+While, using const, which is also blocked scoped, we can create variables which can not be reassigned.
+
+*** How const improves your code ***
+
+Declaring variable with the keyword const makes it easier to reason about the code. 
+As we know that const doesn't let the variable 
+to be reassigned and therefore when we declare and use the variable with const, 
+we can be sure of its value and its usage.
+
+*** Why block scoping matters ***
+
+As we know that block in JavaScript simply can be defined as a set of opening and closing curly brackets. 
+Therefore, using variables with blocking scope helps a lot in keep the global scope less polluted. 
+Also, it helps reducing the chances of errors to occur because of variables with same name disturbing the logic and flow.
+
+// Hint 1: A const must be given an intial value when you declare it
+
+// Hint 2: A const can not be reassigned to a new value
+
+// Hint 3: You have to console.log a variable after it has been
+
+const has restrictions which make the code more readable:
+
+must be initialized with a value
+can't be reassigned after declaration
+Declaring a variable with the keyword const makes it easier to understand the code. 
+As we know that const doesn't allow the variable to be reassigned, 
+we can be sure of its value and usage throughout the entire code.
+
+** How Template Literals Improve Strings**
+
+add variables inside strings (string interpolation):
+let message = `Hi ${username}, how are you?`;
+
+use quotes inside strings:
+`He said, "I am a string."`;
+
+write multi-line strings:
+const threeLines = `This is a string 
+that spans across 
+three lines.
+`;
+
+'I\'m a string';
+"He said, \"I am string.\"";
+
+const threeLines = "This is a string \n that spans \ across three lines.";
+
+***** CHALENGE TEMPLATE LITERALS ******
+// Challenge: Help Darth Vader express himself to his son!
+const mySon = "Luke";
+const parentalStatus = "father";
+const message = `${mySon}, I am your ${parentalStatus}`;
+console.log(message);
+
+******* How Variables Should Be Named *******
+
+Variable identifiers should be self-descriptive and shouldn't require 
+comments for others to know what they hold. 
+Variables are case-sensitive and should be written in camelCase.
+
+let fullName = `${firstName} ${lastName}`;
+Variables which hold Booleans are usually prefixed with is or has.
+
+let isModalVisible = true;
+Variables which should not be changed (including by other developers) should be named in ALL_CAPS.
+
+const COLOR_RED = '#f00';
+
+******* Conditionally Run Javascript Code ********
+
+
+Applications need the ability to do things based on different conditions. 
+There are two ways of modifying flow control to achieve this:
+
+if/else statements
+  if (prefersDarkMode) {
+    document.body.style.background = 'black';
+  } else if (prefersSolarizedMode) {
+    document.body.style.background = 'palegoldenrod';
+  } else {    
+    document.body.style.background = 'ghostwhite';
+  }
+NB: if/else statements work according to the condition which is met first.
+switch statements
+
+  switch (colorMode) {
+  case "solarized":
+  document.body.style.background = 'palegoldenrod';
+    break;
+  case 'dark':
+    document.body.style.background = 'black';
+    break;
+  default:  
+    document.body.style.background = 'ghostwhite';
+}
+NB: In switch statements, if none of the cases match, the default case runs.
+
+************* Types and How They Can Be Changed ************
+There are 2 ways to convert data from one type to another in JS:
+
+Explicit type conversion, where we tell JS that we want to change the data types e.g. String().
+Implicit (automatic) type conversion (coercion), in which JS changes data types automatically.
+console.log("10" + 20);
+All data in JS can be divided into 2 categories:
+
+truthy
+falsy
+Falsy values are false, 0, ' ', null, undefined, NaN. All other values are truthy.
+
+When working with falsy values, remember:
+
+Avoid direct comparisons in conditionals.
+Use triple equals === (strict equals operator) - to prevent type conversion.
+Convert to real Boolean values where needed.
+
+null: when devs says to anothers devs that variable is empty
+undefined : the default way of javascript empty variable
+
+
+// 1) Avoid direct comparisons in conditionals
+
+const username = undefined;
+
+if (!username) {
+  console.log('no user');
+}
+
+// 2) Use triple equals === (strict equals operator) 
+
+if (null === undefined) {
+  console.log('equals');
+} else {
+  console.log('not equals');
+}
+
+// 3) Convert to real Boolean values where needed
+
+if (Boolean(NaN) === Boolean(NaN)) {
+    console.log('equal')
+} else {
+    console.log('not equals')
+}
+
+********** How to Shorten Conditionals with Ternaries ****
+
+
+If/else statements can be repetitive. In order to 
+conditionally assign a variable without repetition, we can use ternary operators:
+
+const cartItemCount = isAuthenticated ? 1 : 0;
+NB: Continue to use if/else statements and not ternaries:
+
+if you want to perform an action.
+if the condition is complex.
+
+********* Even Shorter Conditionals with Short-Circuiting *******
+
+We can make conditionals shorter with logical operators such as || (or) and && (and). This is known as short-circuiting:
+
+const username = response || "guest";
+const username = isEmailVerified && response || "guest";
+NB: Operator Precedence (the order in which operations are performed) means that && will be performed before ||.
+
+If we need to change this, we can use parentheses (()), which have the highest operator precedence of all:
+
+const username = isEmailVerified && (response || "guest");
+
+**** Why We Need Functions *****
+
+To perform similar actions in many places in a program without code repetition, we need to use functions.
+
+function echo(input) {
+    console.log(input);
+}
+NB: A variable declared in a function only exists inside that function.
+
+function echo(input) {
+    let greeting;
+    console.log(input);
+}
+However, a function can access variables declared outside of its scope. It can also be passed input via arguments:
+
+let greeting = "Hi";  
+
+function echo(input) {
+  console.log(`${greeting} ${input}`);  
+}
+
+echo(42);
+}
+
+**** What is a Closure and Why it Matters ******
+
+A closure is an inner function that is inside its outer function’s scope and has access to its variables:
+
+function handleLikePost(step) {
+  let likeCount = 0;
+  return function addLike() {
+    likeCount += step;    
+    return likeCount;
+  }
+
+function handleLikePost(step) {
+  let likeCount = 0;
+  return function addLike() {
+    likeCount += step;    
+    return likeCount;
+  }
+//   addLike();
+  console.log('like count:', likeCount);
+}
+
+const doubleLike = handleLikePost(2);
+
+console.log(doubleLike());
+console.log(doubleLike());
+console.log(doubleLike());
+
+// 1) Closures are a property of JavaScript functions
+// 2) Call function in different scope than where function was original defined
+
+** Shorter Functions with Arrow Functions**
+
+Arrow functions allow us to write more concise code. They are:
+
+function expressions (assigned to a variable)
+anonymous (can't give them a name)
+Implicit returns mean that the value following the => is always returned, so the return keyword is not needed.
+
+const capitalize = name => `${name.charAt(0).toUpperCase()}${name.slice(1)}`;
+
+*** Partial Application for Single-Responsibility Functions ***
+
+Rather than having one function which does multiple actions, partial application allows us to split functions into those which have single, clearly-defined responsibilities.
+
+This improves code readability and allows us to separate our concerns.
+
+function getData(baseUrl) {
+  return function(route) { 
+    return function(callback) {    
+      fetch(`${baseUrl}${route}`)
+        .then(response => response.json())
+        .then(data => callback(data));  
+    }     
+  }  
+}
