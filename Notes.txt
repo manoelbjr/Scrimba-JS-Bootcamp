@@ -274,6 +274,7 @@ function getData(baseUrl) {
     }     
   }  
 }
+<<<<<<< HEAD
 
 *** How Functions Should Be Named ***
 
@@ -318,3 +319,4 @@ Objects can also include functions:
     console.log('hi')  
   }
 }
+
