@@ -351,7 +351,6 @@ console.log(colors);
 
 ** Understand Primitive vs Object Types **
 
-githubtwitter
 Primitive data types (undefined, null, boolean, number, string and symbol) are passed by value, 
 i.e. data is passed into a copy of the original value, meaning that the following code returns true:
 
